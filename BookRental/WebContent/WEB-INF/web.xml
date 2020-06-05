@@ -8,4 +8,12 @@
     <servlet-name>book-list-servlet</servlet-name>
     <url-pattern>/book-list</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>book-list-rent-count-servlet</servlet-name>
+    <servlet-class>web.BookListRentCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>book-list-rent-count-servlet</servlet-name>
+    <url-pattern>/book-list-rent-count</url-pattern>
+  </servlet-mapping>
 </web-app>

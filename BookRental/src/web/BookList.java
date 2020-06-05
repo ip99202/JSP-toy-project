@@ -6,7 +6,7 @@ public class BookList {
 	private ArrayList<String> titleList = new ArrayList<String>();
 	private ArrayList<String> writerList = new ArrayList<String>();
 	private ArrayList<Integer> priceList = new ArrayList<Integer>();
-	private ArrayList<Integer> rentList = new ArrayList<Integer>();
+	private ArrayList<String> rentList = new ArrayList<String>();
 	private ArrayList<Integer> countList = new ArrayList<Integer>();
 	private boolean firstPage = false;
 	private boolean lastPage = false;
@@ -28,7 +28,10 @@ public class BookList {
 		this.priceList.add(index, price);
 	}
 	public void setRent(int index, Integer rent) {
-		this.rentList.add(index, rent);
+		if(rent==0)
+			this.rentList.add(index, "Y");
+		else
+			this.rentList.add(index, "N");
 	}
 	public void setCount(int index, Integer count) {
 		this.countList.add(index, count);
@@ -51,8 +54,8 @@ public class BookList {
 	public Integer[] getPrice() {
 		return priceList.toArray(new Integer[priceList.size()]);
 	}
-	public Integer[] getRent() {
-		return rentList.toArray(new Integer[rentList.size()]);
+	public String[] getRent() {
+		return rentList.toArray(new String[rentList.size()]);
 	}
 	public Integer[] getCount() {
 		return countList.toArray(new Integer[countList.size()]);

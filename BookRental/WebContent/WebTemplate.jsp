@@ -9,7 +9,7 @@
 	<table border=1 cellpadding=10>
 		<tr>
 			<td width=150 valign=top>
-				<a href=>목록</a><br>
+				<a href="/BookRental/book-list">목록</a><br>
 				<a href=>대여량 기준 정렬</a><br>
 				<a href=>대여된 책</a><br>
 				<a href=>대여 가능한 책</a><br>

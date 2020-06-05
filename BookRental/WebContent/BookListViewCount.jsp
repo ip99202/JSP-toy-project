@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>책 목록</title>
+<title>대여량 기준 정렬 책 목록</title>
 </head>
 <body>
 	<table border=1>
@@ -28,13 +28,13 @@
 		</c:forEach>
 	</table>
 		<c:if test="${!BOOK_LIST.firstPage}">
-			<A href='book-list?PAGE_NO=${param.PAGE_NO - 1}'>이전 페이지</A>
+			<A href='book-list-rent-count?PAGE_NO=${param.PAGE_NO - 1}'>이전 페이지</A>
 		</c:if>
 		<c:forEach var="cnt" begin="1" end="${BOOK_LIST.pageNum}">
-			<A href='book-list?PAGE_NO=${cnt}'>${cnt}</A>
+			<A href='book-list-rent-count?PAGE_NO=${cnt}'>${cnt}</A>
 		</c:forEach>
 		<c:if test="${!BOOK_LIST.lastPage }">
-			<A href='book-list?PAGE_NO=${param.PAGE_NO + 1}'>다음 페이지</A>
+			<A href='book-list-rent-count?PAGE_NO=${param.PAGE_NO + 1}'>다음 페이지</A>
 		</c:if>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대여 완료</title>
+<title>대여 결과</title>
 </head>
 <body>
 	<c:set var="result" value="fail"/>

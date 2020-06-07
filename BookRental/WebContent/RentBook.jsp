@@ -4,25 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>책 대여</title>
 </head>
 <body>
-
-	<form action="/BookRental/book-add" method="post">
-		<table>
-			<tr>
-				<td>ID</td><td><input type="text" name="ID"/></td>
-			</tr>
-			<tr>
-				<td>이름</td><td><input type="text" name="TITLE"/></td>
-			</tr>
-			<tr>
-				<td>저자</td><td><input type="text" name="WRITER"/></td>
-			</tr>
-			<tr>
-				<td>가격</td><td><input type="text" name="PRICE"/></td>
-			</tr>
-		</table>
+	<form action="/BookRental/book-rent" method="post">
+		대여할 책 ID를 입력하세요 : 
+		<input type="text" name="ID"/>
 		<input type="submit" value="저장" />
 	</form>
 </body>

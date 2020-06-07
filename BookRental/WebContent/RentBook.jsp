@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%-- <jsp:include page="/WebTemplate.jsp"> --%>
 <!DOCTYPE html>
 <html>
 <head>

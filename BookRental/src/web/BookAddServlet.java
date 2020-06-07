@@ -34,7 +34,7 @@ public class BookAddServlet extends HttpServlet {
 		if("".equals(id) || "".equals(title) || "".equals(writer) || "".equals(s_price))
 			return 2;
 		
-		if(isNumber(id) || isNumber(s_price))
+		if(!isNumber(id) || !isNumber(s_price)) 
 			return 3;
 		
 		int code = Integer.parseInt(id);

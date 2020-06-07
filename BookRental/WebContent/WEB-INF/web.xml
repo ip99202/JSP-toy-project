@@ -8,7 +8,7 @@
     <servlet-name>book-list-servlet</servlet-name>
     <url-pattern>/book-list</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>book-list-rent-count-servlet</servlet-name>
     <servlet-class>web.BookListRentCountServlet</servlet-class>
   </servlet>
@@ -16,7 +16,6 @@
     <servlet-name>book-list-rent-count-servlet</servlet-name>
     <url-pattern>/book-list-rent-count</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>book-list-isrent-servlet</servlet-name>
     <servlet-class>web.BookListIsRentServlet</servlet-class>
@@ -25,7 +24,6 @@
     <servlet-name>book-list-isrent-servlet</servlet-name>
     <url-pattern>/book-list-isrent</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>book-rent-servlet</servlet-name>
     <servlet-class>web.BookRentServlet</servlet-class>
@@ -34,7 +32,6 @@
     <servlet-name>book-rent-servlet</servlet-name>
     <url-pattern>/book-rent</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>book-add-servlet</servlet-name>
     <servlet-class>web.BookAddServlet</servlet-class>
@@ -43,5 +40,12 @@
     <servlet-name>book-add-servlet</servlet-name>
     <url-pattern>/book-add</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>book-return-servlet</servlet-name>
+    <servlet-class>web.BookReturnServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>book-return-servlet</servlet-name>
+    <url-pattern>/book-return</url-pattern>
+  </servlet-mapping>
 </web-app>

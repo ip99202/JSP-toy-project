@@ -17,7 +17,7 @@ public class BookListRentCountServlet extends HttpServlet {
 		list.setPageNum(readPageNum());
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookListViewCount.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewCount.jsp");
 		dispatcher.forward(request, response);
 	}
 	

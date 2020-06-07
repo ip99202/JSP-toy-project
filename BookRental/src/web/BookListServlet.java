@@ -17,7 +17,7 @@ public class BookListServlet extends HttpServlet {
 		list.setPageNum(readPageNum());
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookListView.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=BookListView.jsp");
 		dispatcher.forward(request, response);
 	}
 	

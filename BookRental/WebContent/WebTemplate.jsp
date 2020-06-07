@@ -13,9 +13,12 @@
 				<a href="/BookRental/book-list-rent-count?PAGE_NO=1">대여량 기준 정렬</a><br>
 				<a href="/BookRental/book-list-isrent?PAGE_NO=1&RENT=1">대여된 책</a><br>
 				<a href="/BookRental/book-list-isrent?PAGE_NO=1&RENT=0">대여 가능한 책</a><br>
-				<a href="/BookRental/RentBook.html">대여</a><br>
+				<a href="/BookRental/RentBook.jsp">대여</a><br>
 				<a href="">반납</a><br>
 				<a href="">추가</a><br>	
+			</td>
+			<td valign="top" width="650">
+				<jsp:include page="${param.BODY_PATH }"/>
 			</td>
 		</tr>
 	</table>

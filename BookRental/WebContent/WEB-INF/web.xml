@@ -34,4 +34,14 @@
     <servlet-name>book-rent-servlet</servlet-name>
     <url-pattern>/book-rent</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>book-add-servlet</servlet-name>
+    <servlet-class>web.BookAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>book-add-servlet</servlet-name>
+    <url-pattern>/book-add</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

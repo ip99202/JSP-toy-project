@@ -23,7 +23,7 @@ public class BookListIsRentServlet extends HttpServlet {
 		list.setPageNum(readPageNum(rent));
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookListViewIsRent.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp");
 		dispatcher.forward(request, response);
 	}
 	

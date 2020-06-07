@@ -9,22 +9,36 @@ public class BookAddServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String method = request.getMethod();
 		String id = request.getParameter("ID");
-		int code = Integer.parseInt(id);
 		String title = request.getParameter("TITLE");
 		String writer = request.getParameter("WRITER");
 		String s_price = request.getParameter("PRICE");
-		int price = Integer.parseInt(s_price);
+		
+		
+		
+		int res;
+		res = rentBook(id, title, writer, s_price);
+		if(res == 0)
+			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=success");
+		else if(res == 1)
+			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=exist");
+		else if(res == 2)
+			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=empty");
+		else if(res == 3)
+			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=error");
 
-		if (rentBook(code, title, writer, price) == 1)
-			response.sendRedirect("/BookRental/RentResult.jsp?RESULT=fail");
-
-		else
-			response.sendRedirect("/BookRental/RentResult.jsp?RESULT=success");
 	}
 
-	private int rentBook(int code, String title, String writer, int price) throws ServletException {
+	private int rentBook(String id, String title, String writer, String s_price) throws ServletException {
 		Connection conn = null;
 		Statement stmt = null;
+		if("".equals(id) || "".equals(title) || "".equals(writer) || "".equals(s_price))
+			return 2;
+		
+		if(isNumber(id) || isNumber(s_price))
+			return 3;
+		
+		int code = Integer.parseInt(id);
+		int price = Integer.parseInt(s_price);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookrent?serverTimezone=UTC", "root", "1234567890");
@@ -35,7 +49,8 @@ public class BookAddServlet extends HttpServlet {
 			if (rs.next()) 
 				return 1;
 			else {
-				ResultSet rr = stmt.executeQuery("insert into booksinfo values (" + code + ", '" + title + "', " + price + ", " + 0 + ", " + 0 + ");");
+				int rr = stmt.executeUpdate("insert into booksinfo (code, title, writer, price, rent, count) "
+						+ "values (" + code + ", '" + title + "', '" + writer + "', " + price + ", " + 0 + ", " + 0 + ");");
 			}
 
 		} catch (Exception e) {
@@ -51,5 +66,14 @@ public class BookAddServlet extends HttpServlet {
 			}
 		}
 		return 0;
+	}
+	
+	public static boolean isNumber(String s) {
+		try {
+			Double.parseDouble(s);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 }

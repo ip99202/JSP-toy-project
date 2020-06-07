@@ -15,7 +15,7 @@
 				<a href="/BookRental/book-list-isrent?PAGE_NO=1&RENT=0">대여 가능한 책</a><br>
 				<a href="/BookRental/RentBook.jsp">대여</a><br>
 				<a href="">반납</a><br>
-				<a href="">추가</a><br>	
+				<a href="/BookRental/AddBook.jsp">추가</a><br>	
 			</td>
 			<td valign="top" width="650">
 				<jsp:include page="${param.BODY_PATH }"/>

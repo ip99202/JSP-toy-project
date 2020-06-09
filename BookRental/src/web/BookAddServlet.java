@@ -18,13 +18,13 @@ public class BookAddServlet extends HttpServlet {
 		int res;
 		res = rentBook(id, title, writer, s_price);
 		if(res == 0)
-			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=success");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=success");
 		else if(res == 1)
-			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=exist");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=exist");
 		else if(res == 2)
-			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=empty");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=empty");
 		else if(res == 3)
-			response.sendRedirect("/BookRental/AddResult.jsp?RESULT=error");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=error");
 
 	}
 

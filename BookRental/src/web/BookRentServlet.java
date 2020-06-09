@@ -12,10 +12,10 @@ public class BookRentServlet extends HttpServlet {
 		int code = Integer.parseInt(id);
 
 		if (rentBook(code) == 1)
-			response.sendRedirect("/BookRental/RentResult.jsp?RESULT=fail");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=RentResult.jsp?RESULT=fail");
 
 		else
-			response.sendRedirect("/BookRental/RentResult.jsp?RESULT=success");
+			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=RentResult.jsp?RESULT=success");
 	}
 
 	private int rentBook(int code) throws ServletException {

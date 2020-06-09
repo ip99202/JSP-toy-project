@@ -9,21 +9,21 @@
 <body>
 	<table border=1>
 		<tr>
-			<td width=40>ID</td>
-			<td width=200>이름</td>
-			<td width=80>저자</td>
-			<td width=90>가격</td>
-			<td width=70>대여 가능</td>
-			<td width=70>대여 횟수</td>
+			<td width=60><center>ID</center></td>
+			<td width=200><center>이름</center></td>
+			<td width=180><center>저자</center></td>
+			<td width=90><center>가격</center></td>
+			<td width=80><center>대여 가능</center></td>
+			<td width=80><center>대여 횟수</center></td>
 		</tr>
 		<c:forEach var="cnt" begin="0" end="${BOOK_LIST.listSize - 1 }">
 			<tr>
-				<td>${BOOK_LIST.code[cnt] }</td>
-				<td>${BOOK_LIST.title[cnt] }</td>
-				<td>${BOOK_LIST.writer[cnt] }</td>
-				<td>${BOOK_LIST.price[cnt] }</td>
-				<td>${BOOK_LIST.rent[cnt] }</td>
-				<td>${BOOK_LIST.count[cnt] }</td>
+				<td><center>${BOOK_LIST.code[cnt] }</center></td>
+				<td><center>${BOOK_LIST.title[cnt] }</center></td>
+				<td><center>${BOOK_LIST.writer[cnt] }</center></td>
+				<td><center>${BOOK_LIST.price[cnt] }</center></td>
+				<td><center>${BOOK_LIST.rent[cnt] }</center></td>
+				<td><center>${BOOK_LIST.count[cnt] }</center></td>
 			</tr>
 		</c:forEach>
 	</table>

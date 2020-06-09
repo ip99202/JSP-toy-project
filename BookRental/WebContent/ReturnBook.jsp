@@ -12,12 +12,12 @@
 <body>
 	<table border="1">
 		<tr>
-			<td width=40>ID</td>
-			<td width=200>이름</td>
-			<td width=80>저자</td>
-			<td width=90>가격</td>
-			<td width=70>대여 가능</td>
-			<td width=70>대여 횟수</td>
+			<td width=60><center>ID</center></td>
+			<td width=200><center>이름</center></td>
+			<td width=180><center>저자</center></td>
+			<td width=90><center>가격</center></td>
+			<td width=80><center>대여 가능</center></td>
+			<td width=80><center>대여 횟수</center></td>
 		</tr>
 
 		<%
@@ -41,13 +41,13 @@
 						isRent = "N";
 		%>
 		<tr>
-			<td><%=rs.getString("code")%></td>
-			<td><%=rs.getString("title")%></td>
-			<td><%=rs.getString("writer")%></td>
-			<td><%=rs.getString("price")%></td>
-			<td><%=isRent%></td>
-			<td><%=rs.getString("count")%></td>
-			<td><a href="/BookRental/book-return?ID=<%=rs.getString("code")%>">반납</a></td>
+			<td><center><%=rs.getString("code")%></center></td>
+			<td><center><%=rs.getString("title")%></center></td>
+			<td><center><%=rs.getString("writer")%></center></td>
+			<td><center><%=rs.getString("price")%></center></td>
+			<td><center><%=isRent%></center></td>
+			<td><center><%=rs.getString("count")%></center></td>
+			<td><center><a href="/BookRental/book-return?ID=<%=rs.getString("code")%>">반납</a></center></td>
 		</tr>
 		<%
 			}

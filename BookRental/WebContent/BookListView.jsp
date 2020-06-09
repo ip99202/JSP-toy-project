@@ -7,6 +7,14 @@
 <title>책 목록</title>
 </head>
 <body>
+	<c:set var="iscode" value="code" />
+	<c:set var="isrent" value="rent" />
+	<c:if test="${param.MODE eq iscode}">
+		<h3>도서 목록</h3>
+	</c:if>
+	<c:if test="${param.MODE eq isrent}">
+		<h3>도서 목록(대여량 기준)</h3>
+	</c:if>
 	<table border=1>
 		<tr>
 			<td width=60><center>ID</center></td>
@@ -27,14 +35,17 @@
 			</tr>
 		</c:forEach>
 	</table>
-		<c:if test="${!BOOK_LIST.firstPage}">
-			<A href='book-list?PAGE_NO=${param.PAGE_NO - 1}'>이전 페이지</A>
-		</c:if>
-		<c:forEach var="cnt" begin="1" end="${BOOK_LIST.pageNum}">
-			<A href='book-list?PAGE_NO=${cnt}'>${cnt}</A>
-		</c:forEach>
-		<c:if test="${!BOOK_LIST.lastPage }">
-			<A href='book-list?PAGE_NO=${param.PAGE_NO + 1}'>다음 페이지</A>
-		</c:if>
+	<c:if test="${!BOOK_LIST.firstPage}">
+		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO - 1}'>이전
+			페이지</A>
+	</c:if>
+	<c:forEach var="cnt" begin="1" end="${BOOK_LIST.pageNum}">
+		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${cnt}'>${cnt}</A>
+	</c:forEach>
+	<c:if test="${!BOOK_LIST.lastPage }">
+		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO + 1}'>다음
+			페이지</A>
+	</c:if>
+
 </body>
 </html>

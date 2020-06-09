@@ -9,20 +9,32 @@ public class BookListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String strPageNo = request.getParameter("PAGE_NO");
+		String rentFlag = request.getParameter("MODE");
 		BookList list;
+		
+		String mode;
+		if("rent".equals(rentFlag))
+			mode = "count desc";
+		else
+			mode = "code asc";
 
 		if(strPageNo == null)
 			strPageNo = "1";
-		list = readPage(Integer.parseInt(strPageNo));
+		list = readPage(Integer.parseInt(strPageNo), mode);
 		list.setPageNum(readPageNum());
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=BookListView.jsp");
+		RequestDispatcher dispatcher;
+		if("rent".equals(rentFlag))
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=rent");
+		else
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=code");
+		
 		dispatcher.forward(request, response);
 	}
 	
 	
-	private BookList readPage(int pageNo) throws ServletException {
+	private BookList readPage(int pageNo, String mode) throws ServletException {
 		BookList list = new BookList();
 		Connection conn = null;
 		Statement stmt = null;
@@ -32,10 +44,11 @@ public class BookListServlet extends HttpServlet {
 			if (conn == null)
 				throw new Exception("데이터베이스에 연결할 수 없습니다.");
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select t.* from "
-					+ "( select @rownum := @rownum + 1 as rownum, booksinfo.* from booksinfo, (select @rownum :=0) r order by code asc ) "
-					+ "t where t.rownum between " + (5 * (pageNo - 1) + 1) + " and " + (5 * pageNo + 1) + ";");
-			
+//			ResultSet rs = stmt.executeQuery("select t.* from "
+//					+ "( select @rownum := @rownum + 1 as rownum, booksinfo.* from booksinfo, (select @rownum :=0) r order by " + mode + " ) "
+//					+ "t where t.rownum between " + (5 * (pageNo - 1) + 1) + " and " + (5 * pageNo + 1) + ";");
+			ResultSet rs = stmt.executeQuery("select @rownum := @rownum + 1 as rownum, t.* "
+					+ "from booksinfo t, (select @rownum := 0) tmp order by " + mode + " limit " + (5 * (pageNo - 1)) + ", 6;");
 			
 			for (int cnt = 0; cnt < 5; cnt++) {
 				if (!rs.next())

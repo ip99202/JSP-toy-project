@@ -7,7 +7,7 @@
 <title>추가 결과</title>
 </head>
 <body>
-	<c:set var="result" value="success"/>
+	<h3>도서 추가</h3>
 	<c:set var="exist" value="exist"/>
 	<c:set var="isempty" value="empty"/>
 	<c:set var="iserror" value="error"/>
@@ -19,9 +19,6 @@
 	</c:if>
 	<c:if test="${param.RESULT eq isempty}">
 		모든 데이터를 입력하세요.
-	</c:if>
-	<c:if test="${param.RESULT eq result }">
-		<c:redirect url="/book-list?PAGE_NO=1"/>
 	</c:if>
 </body>
 </html>

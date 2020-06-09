@@ -18,7 +18,7 @@ public class BookAddServlet extends HttpServlet {
 		int res;
 		res = rentBook(id, title, writer, s_price);
 		if(res == 0)
-			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=success");
+			response.sendRedirect("/BookRental/book-list?MODE=code&PAGE_NO=1");
 		else if(res == 1)
 			response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=AddResult.jsp?RESULT=exist");
 		else if(res == 2)

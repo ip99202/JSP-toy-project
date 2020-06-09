@@ -10,6 +10,7 @@
 <title>반납 목록</title>
 </head>
 <body>
+	<h3>반납 목록</h3>
 	<table border="1">
 		<tr>
 			<td width=60><center>ID</center></td>
@@ -35,7 +36,7 @@
 
 				while (rs.next()) {
 					String isRent;
-					if(rs.getString("rent") == "1")
+					if (rs.getString("rent") == "1")
 						isRent = "Y";
 					else
 						isRent = "N";
@@ -47,7 +48,9 @@
 			<td><center><%=rs.getString("price")%></center></td>
 			<td><center><%=isRent%></center></td>
 			<td><center><%=rs.getString("count")%></center></td>
-			<td><center><a href="/BookRental/book-return?ID=<%=rs.getString("code")%>">반납</a></center></td>
+			<td><center>
+					<a href="/BookRental/book-return?ID=<%=rs.getString("code")%>">반납</a>
+				</center></td>
 		</tr>
 		<%
 			}

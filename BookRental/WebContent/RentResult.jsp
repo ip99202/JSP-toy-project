@@ -7,6 +7,7 @@
 <title>대여 결과</title>
 </head>
 <body>
+	<h3>도서 대여</h3>
 	<c:set var="result" value="fail"/>
 	<c:if test="${param.RESULT eq result}">
 		대여할 수 없습니다.

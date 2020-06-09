@@ -9,10 +9,10 @@ public class BookListIsRentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String strPageNo = request.getParameter("PAGE_NO");
-		String rentFlag = request.getParameter("RENT");
+		String rentFlag = request.getParameter("MODE");
 		int rent;
 		BookList list;
-		if("1".equals(rentFlag))
+		if("isrent".equals(rentFlag))
 			rent = 1;
 		else 
 			rent = 0;
@@ -23,7 +23,12 @@ public class BookListIsRentServlet extends HttpServlet {
 		list.setPageNum(readPageNum(rent));
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp");
+		RequestDispatcher dispatcher;
+		
+		if("isrent".equals(rentFlag))
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp?MODE=isrent");
+		else
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp?MODE=canrent");
 		dispatcher.forward(request, response);
 	}
 	
@@ -38,10 +43,11 @@ public class BookListIsRentServlet extends HttpServlet {
 			if (conn == null)
 				throw new Exception("데이터베이스에 연결할 수 없습니다.");
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select t.* from "
-					+ "( select @rownum := @rownum + 1 as rownum, booksinfo.* from booksinfo, (select @rownum :=0) r where rent=" + rent + " order by code asc ) "
-					+ "t where t.rownum between " + (5 * (pageNo - 1) + 1) + " and " + (5 * pageNo + 1) + ";");
-			
+//			ResultSet rs = stmt.executeQuery("select t.* from "
+//					+ "( select @rownum := @rownum + 1 as rownum, booksinfo.* from booksinfo, (select @rownum :=0) r where rent=" + rent + " order by code asc ) "
+//					+ "t where t.rownum between " + (5 * (pageNo - 1) + 1) + " and " + (5 * pageNo + 1) + ";");
+			ResultSet rs = stmt.executeQuery("select @rownum := @rownum + 1 as rownum, t.* "
+					+ "from booksinfo t, (select @rownum := 0) tmp where rent = " + rent + " order by code asc limit " + (5 * (pageNo - 1)) + ", 6;");
 			
 			for (int cnt = 0; cnt < 5; cnt++) {
 				if (!rs.next())

@@ -6,6 +6,7 @@
 <title>책 추가</title>
 </head>
 <body>
+	<div style="margin-left: 50px">
 	<h3>도서 추가</h3>
 	<form action="/BookRental/book-add" method="post">
 		<table>
@@ -28,5 +29,6 @@
 		</table>
 		<input type="submit" value="저장" />
 	</form>
+	</div>
 </body>
 </html>

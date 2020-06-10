@@ -5,7 +5,7 @@
 <title>도서 관리 시스템</title>
 </head>
 <body>
-	<center><h1>도서 관리 시스템</h1></center>
+	<div style="margin-left:430px;"><h1>도서 관리 시스템</h1></div>
 	<table cellpadding=10>
 		<tr>
 			<td width=150 valign=top>

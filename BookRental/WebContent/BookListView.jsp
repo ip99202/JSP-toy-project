@@ -35,17 +35,24 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<c:if test="${!BOOK_LIST.firstPage}">
-		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO - 1}'>이전
-			페이지</A>
-	</c:if>
-	<c:forEach var="cnt" begin="1" end="${BOOK_LIST.pageNum}">
-		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${cnt}'>${cnt}</A>
-	</c:forEach>
-	<c:if test="${!BOOK_LIST.lastPage }">
-		<A href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO + 1}'>다음
-			페이지</A>
-	</c:if>
-
+	<center>
+		<table>
+			<tr>
+				<td width=86><c:if test="${!BOOK_LIST.firstPage}">
+						<A
+							href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO - 1}'>이전
+							페이지</A>
+					</c:if></td>
+				<td><c:forEach var="cnt" begin="1" end="${BOOK_LIST.pageNum}">
+						<A href='book-list?MODE=${param.MODE }&PAGE_NO=${cnt}'>${cnt}</A>
+					</c:forEach></td>
+				<td width=86><c:if test="${!BOOK_LIST.lastPage }">
+						<A
+							href='book-list?MODE=${param.MODE }&PAGE_NO=${param.PAGE_NO + 1}'>다음
+							페이지</A>
+					</c:if></td>
+			</tr>
+		</table>
+	</center>
 </body>
 </html>

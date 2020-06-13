@@ -26,9 +26,9 @@ public class BookListIsRentServlet extends HttpServlet {
 		RequestDispatcher dispatcher;
 		
 		if("isrent".equals(rentFlag))
-			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp?MODE=isrent");
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=isrent");
 		else
-			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListViewIsRent.jsp?MODE=canrent");
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=canrent");
 		dispatcher.forward(request, response);
 	}
 	

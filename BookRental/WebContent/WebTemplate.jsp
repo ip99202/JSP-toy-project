@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>도서 관리 시스템</title>
 </head>
 <body>
@@ -16,6 +17,8 @@
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=RentBook.jsp">- 대여</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=ReturnBook.jsp">- 반납</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=AddBook.jsp">- 추가</a><br>
+				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jspDEL=n">- 검색</a><br>
+				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jsp?DEL=y">- 삭제</a><br>
 			</td>
 			<td valign="top">
 				<jsp:include page="${param.BODY_PATH }"/>

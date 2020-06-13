@@ -14,7 +14,6 @@ public class BookAddServlet extends HttpServlet {
 		String s_price = request.getParameter("PRICE");
 		
 		
-		
 		int res;
 		res = rentBook(id, title, writer, s_price);
 		if(res == 0)
@@ -70,7 +69,7 @@ public class BookAddServlet extends HttpServlet {
 	
 	public static boolean isNumber(String s) {
 		try {
-			Double.parseDouble(s);
+			Integer.parseInt(s);
 			return true;
 		} catch (NumberFormatException e) {
 			return false;

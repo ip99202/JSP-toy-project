@@ -50,7 +50,6 @@ public class BookSearchServlet extends HttpServlet {
 					list.setPrice(cnt, rs.getInt("price"));
 					list.setRent(cnt, rs.getInt("rent"));
 					list.setCount(cnt, rs.getInt("count"));
-					System.out.println(rs.getInt("code"));
 				}
 			}
 		} catch (Exception e) {

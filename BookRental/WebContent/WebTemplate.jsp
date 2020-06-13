@@ -15,10 +15,10 @@
 				<a href="/BookRental/book-list-isrent?MODE=isrent&PAGE_NO=1">- 대여된 책</a><br>
 				<a href="/BookRental/book-list-isrent?MODE=canrent&PAGE_NO=1">- 대여 가능한 책</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=RentBook.jsp">- 대여</a><br>
-				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=ReturnBook.jsp">- 반납</a><br>
+				<a href="/BookRental/book-list-isrent?MODE=isrent&HANDEL=return&PAGE_NO=1">- 반납</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=AddBook.jsp">- 추가</a><br>
-				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jspDEL=n">- 검색</a><br>
-				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jsp?DEL=y">- 삭제</a><br>
+				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jsp">- 검색</a><br>
+				<a href="/BookRental/book-list?MODE=code&HANDEL=delete&PAGE_NO=1">- 삭제</a><br>
 			</td>
 			<td valign="top">
 				<jsp:include page="${param.BODY_PATH }"/>

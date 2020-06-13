@@ -48,4 +48,12 @@
     <servlet-name>book-search-servlet</servlet-name>
     <url-pattern>/book-search</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>book-delete-servlet</servlet-name>
+    <servlet-class>web.BookDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>book-delete-servlet</servlet-name>
+    <url-pattern>/book-delete</url-pattern>
+  </servlet-mapping>
 </web-app>

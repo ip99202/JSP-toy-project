@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class BookAddServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
 		String method = request.getMethod();
 		String id = request.getParameter("ID");
 		String title = request.getParameter("TITLE");

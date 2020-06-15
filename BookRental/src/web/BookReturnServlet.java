@@ -12,7 +12,7 @@ public class BookReturnServlet extends HttpServlet {
 		int code = Integer.parseInt(id);
 
 		rentBook(code);
-		response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=book-list?PAGE_NO=1");
+		response.sendRedirect("/BookRental/book-list?MODE=code&PAGE_NO=1");
 
 	}
 

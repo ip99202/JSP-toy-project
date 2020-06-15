@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	a { text-decoration:none }
+</style>
 <meta charset="UTF-8">
 <title>도서 관리 시스템</title>
 </head>
@@ -12,10 +15,10 @@
 			<td width=150 valign=top>
 				<a href="/BookRental/book-list?MODE=code&PAGE_NO=1">- 목록</a><br>
 				<a href="/BookRental/book-list?MODE=rent&PAGE_NO=1">- 대여량 기준 정렬</a><br>
-				<a href="/BookRental/book-list-isrent?MODE=isrent&PAGE_NO=1">- 대여된 책</a><br>
-				<a href="/BookRental/book-list-isrent?MODE=canrent&PAGE_NO=1">- 대여 가능한 책</a><br>
+				<a href="/BookRental/book-list?MODE=isrent&PAGE_NO=1">- 대여된 책</a><br>
+				<a href="/BookRental/book-list?MODE=canrent&PAGE_NO=1">- 대여 가능한 책</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=RentBook.jsp">- 대여</a><br>
-				<a href="/BookRental/book-list-isrent?MODE=isrent&HANDEL=return&PAGE_NO=1">- 반납</a><br>
+				<a href="/BookRental/book-list?MODE=isrent&HANDEL=return&PAGE_NO=1">- 반납</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=AddBook.jsp">- 추가</a><br>
 				<a href="/BookRental/WebTemplate.jsp?BODY_PATH=BookSearch.jsp">- 검색</a><br>
 				<a href="/BookRental/book-list?MODE=code&HANDEL=delete&PAGE_NO=1">- 삭제</a><br>

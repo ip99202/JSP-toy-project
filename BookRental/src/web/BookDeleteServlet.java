@@ -12,8 +12,7 @@ public class BookDeleteServlet extends HttpServlet {
 		int code = Integer.parseInt(id);
 
 		deleteBook(code);
-		response.sendRedirect("/BookRental/WebTemplate.jsp?BODY_PATH=DeleteResult.jsp");
-
+		response.sendRedirect("/BookRental/book-list?MODE=code&PAGE_NO=1");
 	}
 
 	private int deleteBook(int code) throws ServletException {

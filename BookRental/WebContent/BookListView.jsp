@@ -24,11 +24,11 @@
 	</c:if>
 	<c:if test="${param.MODE eq isrent}">
 		<h3>대여된 도서 목록</h3>
-		<c:set var="page" value="book-list-isrent" />
+		<c:set var="page" value="book-list" />
 	</c:if>
 	<c:if test="${param.MODE eq canrent}">
 		<h3>대여 가능한 도서 목록</h3>
-		<c:set var="page" value="book-list-isrent" />
+		<c:set var="page" value="book-list" />
 	</c:if>
 	<c:if test="${param.MODE eq search}">
 		<h3>검색 결과</h3>
@@ -45,7 +45,7 @@
 			<td style="text-align: center" width=80>대여 횟수</td>
 		</tr>
 		<c:if test="${BOOK_LIST.listSize < 1}">
-			검색 결과가 없습니다.
+			빈 목록입니다.
 		</c:if>
 		<c:if test="${BOOK_LIST.listSize > 0}">
 			<c:forEach var="cnt" begin="0" end="${BOOK_LIST.listSize - 1 }">

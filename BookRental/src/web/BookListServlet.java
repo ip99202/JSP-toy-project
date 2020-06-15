@@ -11,30 +11,38 @@ public class BookListServlet extends HttpServlet {
 		String strPageNo = request.getParameter("PAGE_NO");
 		String rentFlag = request.getParameter("MODE");
 		BookList list;
-		
-		String mode;
+		int rent = -1;
+		String mode = "";
 		if("rent".equals(rentFlag))
 			mode = "count desc";
-		else
+		else if("code".equals(rentFlag))
 			mode = "code asc";
+		else if("isrent".equals(rentFlag))
+			rent = 1;
+		else if("canrent".equals(rentFlag))
+			rent = 0;
 
 		if(strPageNo == null)
 			strPageNo = "1";
-		list = readPage(Integer.parseInt(strPageNo), mode);
-		list.setPageNum(readPageNum());
+		list = readPage(Integer.parseInt(strPageNo), mode, rent);
+		list.setPageNum(readPageNum(rent));
 		
 		request.setAttribute("BOOK_LIST", list);
-		RequestDispatcher dispatcher;
+		RequestDispatcher dispatcher = null;
 		if("rent".equals(rentFlag))
 			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=rent");
-		else
+		else if("code".equals(rentFlag))
 			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=code");
-		
+		else if("isrent".equals(rentFlag))
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=isrent");
+		else if("canrent".equals(rentFlag))
+			dispatcher = request.getRequestDispatcher("/WebTemplate.jsp?BODY_PATH=/BookListView.jsp?MODE=canrent");
+
 		dispatcher.forward(request, response);
 	}
 	
 	
-	private BookList readPage(int pageNo, String mode) throws ServletException {
+	private BookList readPage(int pageNo, String mode, int rent) throws ServletException {
 		BookList list = new BookList();
 		Connection conn = null;
 		Statement stmt = null;
@@ -44,12 +52,13 @@ public class BookListServlet extends HttpServlet {
 			if (conn == null)
 				throw new Exception("데이터베이스에 연결할 수 없습니다.");
 			stmt = conn.createStatement();
-//			ResultSet rs = stmt.executeQuery("select t.* from "
-//					+ "( select @rownum := @rownum + 1 as rownum, booksinfo.* from booksinfo, (select @rownum :=0) r order by " + mode + " ) "
-//					+ "t where t.rownum between " + (5 * (pageNo - 1) + 1) + " and " + (5 * pageNo + 1) + ";");
-			ResultSet rs = stmt.executeQuery("select @rownum := @rownum + 1 as rownum, t.* "
+			ResultSet rs;
+			if(rent == -1)
+				rs = stmt.executeQuery("select @rownum := @rownum + 1 as rownum, t.* "
 					+ "from booksinfo t, (select @rownum := 0) tmp order by " + mode + " limit " + (5 * (pageNo - 1)) + ", 6;");
-			
+			else
+				rs = stmt.executeQuery("select @rownum := @rownum + 1 as rownum, t.* "
+						+ "from booksinfo t, (select @rownum := 0) tmp where rent = " + rent + " order by code asc limit " + (5 * (pageNo - 1)) + ", 6;");
 			for (int cnt = 0; cnt < 5; cnt++) {
 				if (!rs.next())
 					break;
@@ -80,7 +89,7 @@ public class BookListServlet extends HttpServlet {
 	}
 	
 	
-	private int readPageNum() throws ServletException {
+	private int readPageNum(int rent) throws ServletException {
 		int pageNum;
 		Connection conn = null;
 		Statement stmt = null;
@@ -90,7 +99,11 @@ public class BookListServlet extends HttpServlet {
 			if (conn == null)
 				throw new Exception("데이터베이스에 연결할 수 없습니다.");
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select count(*) as NUM from booksinfo;");
+			ResultSet rs;
+			if(rent == -1)
+				rs = stmt.executeQuery("select count(*) as NUM from booksinfo;");
+			else
+				rs = stmt.executeQuery("select count(*) as NUM from booksinfo where rent=" + rent + ";");
 			if (!rs.next())
 				return 0;
 			pageNum = rs.getInt("NUM");
